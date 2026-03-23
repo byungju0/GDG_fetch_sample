@@ -73,7 +73,6 @@ export default function TodoApp() {
         <TodoFilter
           currentFilter={filter}
           onFilterChange={setFilter}
-          activeCount={activeCount}
         />
 
         {/* List */}
@@ -87,8 +86,19 @@ export default function TodoApp() {
           <div className="m-6 border-2 border-dashed border-gray-200 rounded-2xl py-10 px-6 text-center">
             <p className="text-gray-400 text-sm">
               {todos.length === 0
-                ? '할 일을 추가해보세요!'
-                : '해당하는 할 일이 없습니다.'}
+                ? '📋 할 일을 추가해보세요!'
+                : '🔍 해당하는 할 일이 없습니다.'}
+            </p>
+          </div>
+        )}
+
+        {/* Footer */}
+        {todos.length > 0 && (
+          <div className="px-6 py-3 border-t border-gray-100 bg-gray-50">
+            <p className="text-xs text-gray-400 text-center">
+              {activeCount > 0
+                ? `${activeCount}개 남음 · 완료 ${todos.length - activeCount}개`
+                : '모든 할 일을 완료했습니다! 🎉'}
             </p>
           </div>
         )}

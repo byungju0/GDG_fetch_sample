@@ -10,7 +10,9 @@ interface TodoItemProps {
 
 export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
   return (
-    <li className="flex items-center gap-3 px-6 py-4 hover:bg-gray-50 group transition-colors">
+    <li className={`flex items-center gap-3 px-6 py-4 group transition-colors ${
+      todo.completed ? 'bg-green-50/40 hover:bg-green-50/60' : 'hover:bg-gray-50'
+    }`}>
       {/* Custom checkbox */}
       <button
         onClick={() => onToggle(todo.id)}
@@ -42,7 +44,7 @@ export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
       <button
         onClick={() => onDelete(todo.id)}
         aria-label="삭제"
-        className="opacity-0 group-hover:opacity-100 transition-opacity w-6 h-6 rounded-full
+        className="opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity w-6 h-6 rounded-full
                    flex items-center justify-center text-gray-300 hover:text-[#EA4335]
                    hover:bg-red-50 cursor-pointer text-base leading-none"
       >

@@ -9,9 +9,11 @@ interface TodoInputProps {
 export default function TodoInput({ onAdd }: TodoInputProps) {
   const [value, setValue] = useState('');
 
+  const isValid = value.trim().length > 0;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!value.trim()) return;
+    if (!isValid) return;
     onAdd(value);
     setValue('');
   };
@@ -29,7 +31,7 @@ export default function TodoInput({ onAdd }: TodoInputProps) {
       />
       <button
         type="submit"
-        disabled={!value.trim()}
+        disabled={!isValid}
         className="px-5 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-150
                    bg-[#9b1c31] hover:bg-[#7f1d2e] disabled:bg-gray-300 disabled:cursor-not-allowed
                    shadow-sm cursor-pointer"
