@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# typescript
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# secrets
+.mcp.json
+
+# misc
+.DS_Store
+*.pem
+.env*
+!.env.example
